@@ -1,32 +1,20 @@
-export function findBorders(text: string): number[] {
-    const borders = new Array(text.length);
+export function findBorders(pattern: string): number[] {
+    const borders = new Array(pattern.length);
     borders[0] = 0;
 
-    for (let i = 1, length = text.length; i < length; i++) {
-        borders[i] = findMaxBorder(text, i + 1);
+    let currentIndex = 0;
+
+    for (var i = 1; i < pattern.length; i++) {
+        while (currentIndex > 0 && pattern[currentIndex] !== pattern[i]) {
+            currentIndex = borders[currentIndex - 1];
+        }
+
+        if (pattern[currentIndex] === pattern[i]) {
+            currentIndex++;
+        }
+
+        borders[i] = currentIndex;
     }
 
     return borders;
-}
-
-function findMaxBorder(text: string, length: number): number {
-    let max = 0;
-
-    for (let i = 0; i < length - 1; i++) {
-        if (isPartsEqually(text, 0, length - i - 1, i + 1)) {
-            max = i + 1;
-        }
-    }
-
-    return max;
-}
-
-function isPartsEqually(text: string, firstIndex: number, secondIndex: number, length: number): boolean {
-    for(let i = 0; i < length; i++) {
-        if (text[firstIndex + i] !== text[secondIndex + i]) {
-            return false;
-        }
-    }
-
-    return true;
 }
