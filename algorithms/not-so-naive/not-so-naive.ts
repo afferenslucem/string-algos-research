@@ -1,4 +1,4 @@
-import { compare, createCounter } from '../counter';
+import { compare, createCounter } from '../../counter';
 
 export function getSubstringNotSoNaive(text: string, pattern: string): number[] {
     const result = [];

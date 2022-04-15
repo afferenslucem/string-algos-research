@@ -1,5 +1,5 @@
-import { findBorders } from './find-borders';
-import { compare, createCounter } from '../counter';
+import { findBorders } from '../../utils/find-borders';
+import { compare, createCounter } from '../../counter';
 
 export function getSubstringKMP(text: string, pattern: string): number[] {
     const borders = findBorders(pattern);

@@ -4,7 +4,7 @@ export function findBorders(pattern: string): number[] {
 
     let currentIndex = 0;
 
-    for (var i = 1; i < pattern.length; i++) {
+    for (let i = 1; i < pattern.length; i++) {
         while (currentIndex > 0 && pattern[currentIndex] !== pattern[i]) {
             currentIndex = borders[currentIndex - 1];
         }
