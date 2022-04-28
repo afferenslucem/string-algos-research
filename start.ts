@@ -4,7 +4,7 @@ import { scream } from './measures/scream';
 import { getAllCounters } from './counter';
 import { bmBadSymbolsCompare } from './measures/bm-comparing';
 
-// scream();
-// dna();
-// peaceAndWar();
-bmBadSymbolsCompare();
+scream();
+dna();
+peaceAndWar();
+// bmBadSymbolsCompare();

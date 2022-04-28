@@ -1,8 +1,8 @@
 import { badCharacterHeuristic } from './bad-character-heuristic';
 import { compare, createCounter } from '../../../../counter';
 
-export function getSubstringBMBadCharacter(text: string, pattern: string, arraySize: number): number[] {
-    const symbolIndexes = badCharacterHeuristic(pattern, arraySize);
+export function getSubstringBMBadCharacter(text: string, pattern: string): number[] {
+    const symbolIndexes = badCharacterHeuristic(pattern, 256);
 
     const result = [];
 
@@ -22,7 +22,7 @@ export function getSubstringBMBadCharacter(text: string, pattern: string, arrayS
             result.push(shift);
 
             const indent = (shift + pattern.length < text.length)
-                ? pattern.length - (symbolIndexes[text.charCodeAt(shift + pattern.length) % arraySize] ?? -1)
+                ? pattern.length - (symbolIndexes[text.charCodeAt(shift + pattern.length) % 256] ?? -1)
                 : 1;
 
             shift += indent;
@@ -30,7 +30,7 @@ export function getSubstringBMBadCharacter(text: string, pattern: string, arrayS
             // Если у нас нарушается совпадение паттерна, то мы сдвигаем паттерн так, чтобы близжайшее правое вхождение символа в паттерне совпало с текстом
             // Если символ текста не содержится в паттерне, то мы просто перекидываем петтерн за этот символ.
 
-            const indent = symbolIndexes[text.charCodeAt(shift + currentIndex) % arraySize] ?? -1;
+            const indent = symbolIndexes[text.charCodeAt(shift + currentIndex) % 256] ?? -1;
 
             shift += Math.max(1, currentIndex - indent);
         }

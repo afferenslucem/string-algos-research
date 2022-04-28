@@ -1,2 +1,4 @@
 ﻿node_modules
 .idea
+measures/cpp/cmake-build-debug
+measures/cpp/cmake-build-release

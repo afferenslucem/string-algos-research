@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@string-searching/brute-force": "^1.0.0",
+    "@string-searching/rabin-karp": "^1.0.0",
     "benchmark": "^2.1.4",
     "chai": "^4.3.6"
   },
